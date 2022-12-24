@@ -1,0 +1,19 @@
+{
+  "name": "event-manager",
+  "version": "1.0.0",
+  "description": "Event Manager is a single platform for retrieving, creating, updating and deleting events.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kollol-dev/Event-Manager.git"
+  },
+  "author": "Kollol Chakraborty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kollol-dev/Event-Manager/issues"
+  },
+  "homepage": "https://github.com/kollol-dev/Event-Manager#readme"
+}
