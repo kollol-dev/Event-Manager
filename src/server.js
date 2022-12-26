@@ -12,6 +12,10 @@ app.get('/health', (req, res) => {
 
 sequelize.sync({ alter: true });
 
+
+
+
+
 app.listen({ port }, async () => {
   console.log(`listening on port ${port}`)
   try {
