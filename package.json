@@ -2,8 +2,11 @@
   "name": "event-manager",
   "version": "1.0.0",
   "description": "Event Manager is a single platform for retrieving, creating, updating and deleting events.",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
+    "serve": "nodemon src/server.js",
+    "serve:docker": "docker-compose --file docker-compose.yml up --build",
+    "serve:docker:down": "docker-compose --file docker-compose.yml down --remove-orphans",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +18,14 @@
   "bugs": {
     "url": "https://github.com/kollol-dev/Event-Manager/issues"
   },
-  "homepage": "https://github.com/kollol-dev/Event-Manager#readme"
+  "homepage": "https://github.com/kollol-dev/Event-Manager#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.28.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }

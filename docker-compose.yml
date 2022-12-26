@@ -1,0 +1,54 @@
+version: '3.8'
+services:
+  express-api:
+    container_name: express-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ./.env
+    volumes:
+      - ./src:/app/src
+    ports:
+      - ${PORT}:${PORT}
+    restart: unless-stopped
+    depends_on:
+      - mysql-server-setup
+      - mysql-server
+    command: 'npm run serve'
+
+  mysql-server:
+    container_name: mysql-server
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    env_file:
+      - ./.env
+    command: --pid-file /var/lib/mysql/mysqld.pid
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    restart: unless-stopped
+    volumes:
+      - database:/var/lib/mysql
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 55
+
+  mysql-server-setup:
+    container_name: mysql-server-setup
+    image: mysql:8.0
+    restart: on-failure
+    volumes:
+      - ./scripts:/scripts
+    entrypoint: ['/scripts/setup.sh']
+    depends_on:
+      - mysql-server
+
+volumes:
+  database:
