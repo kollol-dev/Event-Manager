@@ -5,6 +5,7 @@ const { sequelize } = require("./models");
 const express = require('express')
 const port = process.env.PORT || 3000
 const app = express()
+const eventRoutes = require('./routes/v1/event')
 
 app.get('/health', (req, res) => {
   res.send('Healthy!')
@@ -12,8 +13,7 @@ app.get('/health', (req, res) => {
 
 sequelize.sync({ alter: true });
 
-
-
+app.use('/api/v1', eventRoutes);
 
 
 app.listen({ port }, async () => {
