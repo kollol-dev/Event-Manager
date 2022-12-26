@@ -1,5 +1,6 @@
 require('dotenv').config({ path: `${__dirname}/../.env` });
-require('./database/connect');
+const { sequelize } = require("./models");
+// require('./database/connect');
 
 const express = require('express')
 const port = process.env.PORT || 3000
@@ -9,6 +10,14 @@ app.get('/health', (req, res) => {
   res.send('Healthy!')
 })
 
-app.listen(port, () => {
+sequelize.sync({ alter: true });
+
+app.listen({ port }, async () => {
   console.log(`listening on port ${port}`)
+  try {
+    await sequelize.authenticate();
+    console.log("Database connected successfully.");
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
 })

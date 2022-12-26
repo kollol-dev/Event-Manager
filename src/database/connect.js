@@ -1,15 +1,19 @@
 const { Sequelize } = require('sequelize');
+const fs = require('fs')
+const path = require('path');
+const basename = path.basename(__filename)
+const modelDirectoryPath = path.join(__dirname, "/../models")
 const {
     mysql: {
         password,
         host,
         username,
         dbPort,
-        dbSslMode
-    } 
-} = require('../config')
+        database
+    }
+} = require('../config/environments')
 
-const sequelize = new Sequelize("", username, password, {
+const sequelize = new Sequelize(database, username, password, {
     host,
     post: dbPort,
     dialect: "mysql",
@@ -28,5 +32,23 @@ sequelize.authenticate()
     .catch(err => {
         console.error('Unable to connect to the database:', err);
     });
+
+
+// const db = {}
+// fs.readdirSync(modelDirectoryPath)
+//     .filter(file => {
+//         return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+//     })
+//     .forEach(file => {
+//         const model = require(path.join(modelDirectoryPath, file))(sequelize, Sequelize.DataTypes);
+//         db[model.name] = model;
+//     });
+// console.log('db', db)
+// console.log('__dirname', __dirname)
+// Object.keys(db).forEach(modelName => {
+//     if (db[modelName].associate) {
+//         db[modelName].associate(db);
+//     }
+// });
 
 module.exports = sequelize
