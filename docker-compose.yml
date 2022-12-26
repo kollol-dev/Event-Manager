@@ -13,8 +13,10 @@ services:
       - ${PORT}:${PORT}
     restart: unless-stopped
     depends_on:
-      - mysql-server-setup
-      - mysql-server
+      # mysql-server-setup:
+      #     condition: service_started
+      mysql-server:
+          condition: service_healthy
     command: 'npm run serve'
 
   mysql-server:
@@ -24,7 +26,6 @@ services:
       - "3306:3306"
     env_file:
       - ./.env
-    command: --pid-file /var/lib/mysql/mysqld.pid
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -40,15 +41,15 @@ services:
       timeout: 5s
       retries: 55
 
-  mysql-server-setup:
-    container_name: mysql-server-setup
-    image: mysql:8.0
-    restart: on-failure
-    volumes:
-      - ./scripts:/scripts
-    entrypoint: ['/scripts/setup.sh']
-    depends_on:
-      - mysql-server
+  # mysql-server-setup:
+  #   container_name: mysql-server-setup
+  #   image: mysql:8.0
+  #   restart: on-failure
+  #   volumes:
+  #     - ./scripts:/scripts
+  #   entrypoint: ['/scripts/setup.sh']
+  #   depends_on:
+  #     - mysql-server
 
 volumes:
   database:
