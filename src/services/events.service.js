@@ -19,7 +19,6 @@ module.exports = {
     },
 
     createEvent: async (args) => {
-        console.log({ args })
         return Event.create(args)
     },
 
