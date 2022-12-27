@@ -15,6 +15,10 @@ module.exports = {
         return Event.findAll(paginate({}, { page, pageSize }))
     },
 
+    getEvent: async (id) => {
+        return Event.findByPk(id)
+    },
+
     createEvent: async (args) => {
         return Event.create(args)
     },
