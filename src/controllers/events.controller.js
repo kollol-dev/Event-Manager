@@ -1,4 +1,4 @@
-const { paginateEventsValidator, createEventValidator } = require('../validators/events.validator')
+const { paginateEventsValidator, createEventValidator, updateEventValidator } = require('../validators/events.validator')
 const { paginateEvent, createEvent } = require('../services/events.service')
 
 module.exports = {
@@ -36,7 +36,31 @@ module.exports = {
                     errors: validateArgs.error.details,
                 });
             }
+
+            args.date = new Date().toISOString()
+            const event = await this.createEvent(args)
             
+            return res.status(201).json({
+                data: event,
+            });
+        } catch (error) {
+            console.error(err);
+            return res.status(400).json({
+                message: 'Something went wrong!',
+            });
+        }
+    },
+
+    updateEventById: async (req, res) => {
+        try {
+            const args = req.body
+            const validateArgs = updateEventValidator.validate(args);
+            if (validateArgs.error) {
+                return res.status(422).json({
+                    errors: validateArgs.error.details,
+                });
+            }
+
             args.date = new Date().toISOString()
             const event = await this.createEvent(args)
             

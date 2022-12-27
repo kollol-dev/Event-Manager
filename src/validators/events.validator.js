@@ -9,5 +9,10 @@ module.exports = {
     createEventValidator: Joi.object.object({ abortEarly: false, stripUnknown: true }).keys({
         name: Joi.string().required(),
         location: Joi.string().required()
+    }),
+
+    updateEventValidator: Joi.object.object({ abortEarly: false, stripUnknown: true }).keys({
+        name: Joi.string(),
+        location: Joi.string()
     })
 };
