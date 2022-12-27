@@ -77,7 +77,7 @@ module.exports = {
             await updateEvent(args)
 
             return res.status(200).json({
-                event: await getEvent(args.id)
+                data: await getEvent(args.id)
             });
         } catch (error) {
             console.error(error);
