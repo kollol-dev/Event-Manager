@@ -1,8 +1,8 @@
 version: '3.8'
 
 services:
-  express-api:
-    container_name: express-api
+  event-app:
+    container_name: event-app
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,21 +10,21 @@ services:
       - ./.env
     volumes:
       - ./src:/usr/src/app/src
+      - ./frontend:/usr/src/app/frontend
     ports:
       - ${PORT}:${PORT}
+      - ${FRONTEND_PORT}:${FRONTEND_PORT}
     restart: unless-stopped
     depends_on:
-      # mysql-server-setup:
-      #     condition: service_started
       mysql-server:
-          condition: service_healthy
-    command: npm run serve
+        condition: service_healthy
+    command: sh -c "(npm run serve &) && cd ./frontend && npm run serve"
 
   mysql-server:
     container_name: mysql-server
     image: mysql:8.0
     ports:
-      - 3306:3306
+      - 3307:3306
     env_file:
       - ./.env
     environment:
@@ -43,16 +43,6 @@ services:
       interval: 5s
       timeout: 5s
       retries: 55
-
-  # mysql-server-setup:
-  #   container_name: mysql-server-setup
-  #   image: mysql:8.0
-  #   restart: on-failure
-  #   volumes:
-  #     - ./scripts:/scripts
-  #   entrypoint: ['/scripts/setup.sh']
-  #   depends_on:
-  #     - mysql-server
 
 volumes:
   database:
