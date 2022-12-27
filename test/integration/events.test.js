@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 
 describe('Event API V1 Suite', () => {
     beforeEach(async () => {
-        // await Promise.all([deleteAllEvents()]);
+        await Promise.all([deleteAllEvents()]);
     });
 
     it('should create an event', async () => {
@@ -25,8 +25,6 @@ describe('Event API V1 Suite', () => {
             .post(`${BASE_PATH}/events`)
             .send(eventInput);
 
-        console.log({ response })
-
         const event = response?.body?.data;
         assert.equal(response?.status, 201, 'Response code should be 201');
         assert.isObject(event, 'Event should be an object!');
@@ -39,6 +37,6 @@ describe('Event API V1 Suite', () => {
     })
 
     afterEach(async () => {
-        // await Promise.all([deleteAllEvents()]);
+        await Promise.all([deleteAllEvents()]);
     });
 });
