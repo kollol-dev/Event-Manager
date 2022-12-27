@@ -1,4 +1,4 @@
-const Event = require('../models/event')
+const { Event } = require('../models')
 
 const paginate = (query, { page, pageSize }) => {
     const offset = page * pageSize;
@@ -30,6 +30,13 @@ module.exports = {
     deleteEventById: async (id) => {
         return Event.destroy({
             where: { id }
+        })
+    },
+
+    deleteAllEvents: async () => {
+        return Event.destroy({
+            where: {},
+            truncate: true
         })
     }
 }

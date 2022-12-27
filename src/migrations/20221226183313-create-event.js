@@ -9,19 +9,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_id: {
-        type: Sequelize.INTEGER.UNSIGNED,
-        allowNull: false,
-        references: {
-          model: {
-            tableName: 'users',
-            schema: 'schema'
-          },
-          key: 'id',
-          onUpdate: "CASCADE",
-          onDelete: "CASCADE",
-        },
-      },
+      // user_id: {
+      //   type: Sequelize.INTEGER.UNSIGNED,
+      //   allowNull: false,
+      //   references: {
+      //     model: {
+      //       tableName: 'users',
+      //       schema: 'schema'
+      //     },
+      //     key: 'id',
+      //     onUpdate: "CASCADE",
+      //     onDelete: "CASCADE",
+      //   },
+      // },
       name: {
         type: Sequelize.STRING,
         allowNull: false
