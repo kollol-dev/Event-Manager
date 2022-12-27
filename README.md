@@ -21,6 +21,10 @@ This project contains few apis like create events, paginate events, update and d
 After this operation, the app server will start in `http://localhost:3000`
 
 ### APIs
+I have attached all APIs here as well.
+For more details abouts APIs, visit this [http://localhost:3000/api/v1/docs/](http://localhost:3000/api/v1/docs/) to see api documentation.
+
+
 - POST Create Events [/api/v1/events](http://localhost:3000/api/v1/events)
 - GET Paginate Events [/api/v1/events?page=1&pageSize=5](http://localhost:3000/api/v1/events?page=1&pageSize=5)
 - GET Get Specific Event by id [/api/v1/events/:id](http://localhost:3000/api/v1/events/:id)

@@ -1,0 +1,172 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Event Manager API",
+    "description": "This project contains few apis like **Create Events**, **Paginate Events**, **Update and delete any specific Event**. In here, I used **Node.js** and **MySQL**."
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "paths": {
+    "/events": {
+      "get": {
+        "description": "Paginate all events.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "default": 1,
+            "description": "Numeric value of the active page."
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "default": 5,
+            "description": "Numeric value of the events per page."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Events"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create an event.",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the event."
+          },
+          {
+            "name": "location",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Location of the event."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Events"
+            }
+          }
+        }
+      }
+    },
+    "/event/:id": {
+      "get": {
+        "description": "Get any specific event by id.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Event"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Update any specific event by id.",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the event."
+          },
+          {
+            "name": "location",
+            "in": "body",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Location of the event."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Event"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete any specific event by id.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Event": {
+      "required": [
+        "name",
+        "location"
+      ],
+      "properties": {
+        "_id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Events": {
+      "type": "array",
+      "$ref": "#/definitions/Event"
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ]
+}
