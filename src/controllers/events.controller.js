@@ -1,5 +1,5 @@
 const { paginateEventsValidator, createEventValidator, updateEventValidator } = require('../validators/events.validator')
-const { paginateEvent, createEvent } = require('../services/events.service')
+const { paginateEvent, createEvent, updateEvent } = require('../services/events.service')
 
 module.exports = {
     pageinateEvents: async (req, res) => {
@@ -38,8 +38,8 @@ module.exports = {
             }
 
             args.date = new Date().toISOString()
-            const event = await this.createEvent(args)
-            
+            const event = await createEvent(args)
+
             return res.status(201).json({
                 data: event,
             });
@@ -61,10 +61,10 @@ module.exports = {
                 });
             }
 
-            args.date = new Date().toISOString()
-            const event = await this.createEvent(args)
-            
-            return res.status(201).json({
+            args.id = req.params.id
+            const event = await updateEvent(args)
+
+            return res.status(200).json({
                 data: event,
             });
         } catch (error) {

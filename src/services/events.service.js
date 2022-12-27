@@ -17,5 +17,9 @@ module.exports = {
 
     createEvent: async (args) => {
         return Event.create(args)
+    },
+
+    updateEvent: async ({ id, ...args }) => {
+        return Event.update(args, { where: { id } })
     }
 }
