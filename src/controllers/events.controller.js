@@ -73,5 +73,8 @@ module.exports = {
                 message: 'Something went wrong!',
             });
         }
+    },
+
+    deleteEventById: async (req, res) => {
     }
 }
