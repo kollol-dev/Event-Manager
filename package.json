@@ -4,7 +4,7 @@
   "description": "Event Manager is a single platform for retrieving, creating, updating and deleting events.",
   "main": "src/server.js",
   "scripts": {
-    "serve": "nodemon -L src/server.js",
+    "serve": "nodemon src/server.js",
     "serve:docker": "docker-compose --file docker-compose.yml up --build",
     "serve:docker:down": "docker-compose --file docker-compose.yml down --remove-orphans",
     "migrate:seed": "npx sequelize-cli db:migrate --migrations-path='./src/migrations' && npx sequelize-cli db:seed:all --seeders-path='../src/seeders'",
