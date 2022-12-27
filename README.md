@@ -12,7 +12,7 @@ This project contains few apis like create events, paginate events, update and d
 - Copy `.env.example` to `.env` 
 
 ### For Docker
-- Run  `npm run server:docker` 
+- Run  `npm run serve:docker` 
 
 ### For Mannual
 - Install all dependencies, Run `npm install` 
