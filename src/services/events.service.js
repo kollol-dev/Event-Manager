@@ -21,5 +21,11 @@ module.exports = {
 
     updateEvent: async ({ id, ...args }) => {
         return Event.update(args, { where: { id } })
+    },
+
+    deleteEventById: async (id) => {
+        return Event.destroy({
+            where: { id }
+        })
     }
 }

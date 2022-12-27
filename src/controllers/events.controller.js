@@ -1,5 +1,5 @@
 const { paginateEventsValidator, createEventValidator, updateEventValidator } = require('../validators/events.validator')
-const { paginateEvent, createEvent, updateEvent } = require('../services/events.service')
+const { paginateEvent, createEvent, updateEvent, deleteEventById } = require('../services/events.service')
 
 module.exports = {
     pageinateEvents: async (req, res) => {
