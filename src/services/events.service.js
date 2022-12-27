@@ -31,5 +31,12 @@ module.exports = {
         return Event.destroy({
             where: { id }
         })
+    },
+
+    deleteAllEvents: async () => {
+        return Event.destroy({
+            where: {},
+            truncate: true
+        })
     }
 }
