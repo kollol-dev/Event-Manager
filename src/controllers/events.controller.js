@@ -1,6 +1,5 @@
-const EventModel = require('../models/event')
-const { paginateEventsValidator } = require('../validators/events.validator')
-const { paginateEvent } = require('../services/events.service')
+const { paginateEventsValidator, createEventValidator } = require('../validators/events.validator')
+const { paginateEvent, createEvent } = require('../services/events.service')
 
 module.exports = {
     pageinateEvents: async (req, res) => {
@@ -29,10 +28,25 @@ module.exports = {
     },
 
     createEvent: async (req, res) => {
-        const validateArgs = paginateEventsValidator.validate(req.body);
-        if (validateArgs.error) {
-            return res.status(422).json({
-                errors: validateArgs.error.details,
+        try {
+            const args = req.body
+            const validateArgs = createEventValidator.validate(args);
+            if (validateArgs.error) {
+                return res.status(422).json({
+                    errors: validateArgs.error.details,
+                });
+            }
+            
+            args.date = new Date().toISOString()
+            const event = await this.createEvent(args)
+            
+            return res.status(201).json({
+                data: event,
+            });
+        } catch (error) {
+            console.error(err);
+            return res.status(400).json({
+                message: 'Something went wrong!',
             });
         }
     }
