@@ -15,7 +15,7 @@ module.exports = {
             const events = await paginateEvent(page, pageSize)
             return res.status(200).json({
                 page,
-                perPage,
+                pageSize,
                 data: events,
             });
         } catch (error) {
