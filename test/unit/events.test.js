@@ -26,7 +26,7 @@ describe('Event Service Suit', () => {
       location: faker.lorem.word(8),
       date: faker.date.past(10)
     };
-    await createEvent(eventInput)
+    const newEvent = await createEvent(eventInput)
     expect(await getEvent(newEvent.id)).to.be.a('object');
   });
 
