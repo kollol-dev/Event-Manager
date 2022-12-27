@@ -11,11 +11,11 @@ const paginate = (query, { page, pageSize }) => {
 };
 module.exports = {
     paginateEvent: async (page, pageSize) => {
-        return Event.findAll(paginate({}, { page, pageSize }))
+        return Event.findAll(paginate({ raw: true }, { page, pageSize }))
     },
 
     getEvent: async (id) => {
-        return Event.findByPk(id)
+        return Event.findByPk(id, { raw: true })
     },
 
     createEvent: async (args) => {
@@ -27,9 +27,7 @@ module.exports = {
     },
 
     deleteEventById: async (id) => {
-        return Event.destroy({
-            where: { id }
-        })
+        return Event.destroy({ where: { id } })
     },
 
     deleteAllEvents: async () => {

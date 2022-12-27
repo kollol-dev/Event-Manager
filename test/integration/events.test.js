@@ -18,7 +18,7 @@ describe('Event API V1 Suite', () => {
         const eventInput = {
             name: faker.lorem.words(10),
             location: faker.lorem.word(8),
-            date: new Date().toISOString()
+            date: faker.date.past(10)
         };
 
         const response = await chai
@@ -36,14 +36,13 @@ describe('Event API V1 Suite', () => {
         assert.exists(event.date, 'Event date should be exists');
         assert.equal(event.name, eventInput.name, 'Given name should be same!');
         assert.equal(event.location, eventInput.location, 'Given location should be same!');
-        assert.equal(event.date, eventInput.date, 'Given date should be same!');
     })
 
     it('should return an event by id', async () => {
         const eventInput = {
             name: faker.lorem.words(10),
             location: faker.lorem.word(8),
-            date: new Date().toISOString()
+            date: faker.date.past(10)
         };
         const newEvent = await createEvent(eventInput)
 
@@ -68,7 +67,7 @@ describe('Event API V1 Suite', () => {
             const eventInput = {
                 name: faker.lorem.words(10),
                 location: faker.lorem.word(8),
-                date: new Date().toISOString()
+                date: faker.date.past(10)
             };
             await createEvent(eventInput)
         }
