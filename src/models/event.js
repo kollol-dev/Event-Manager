@@ -20,10 +20,10 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       allowNull: false
     },
-    user_id: {
-      type: DataTypes.INTEGER.UNSIGNED,
-      allowNull: false
-    },
+    // user_id: {
+    //   type: DataTypes.INTEGER.UNSIGNED,
+    //   allowNull: false
+    // },
     name: {
       type: DataTypes.STRING,
       allowNull: false

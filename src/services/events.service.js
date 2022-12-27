@@ -1,4 +1,4 @@
-const Event = require('../models/event')
+const { Event } = require('../models')
 
 const paginate = (query, { page, pageSize }) => {
     const offset = page * pageSize;

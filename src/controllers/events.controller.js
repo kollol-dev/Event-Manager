@@ -19,7 +19,7 @@ module.exports = {
                 data: events,
             });
         } catch (error) {
-            console.error(err);
+            console.error(error);
             return res.status(400).json({
                 message: 'Something went wrong!',
             });
@@ -34,7 +34,7 @@ module.exports = {
                 data: event,
             });
         } catch (error) {
-            console.error(err);
+            console.error(error);
             return res.status(400).json({
                 message: 'Something went wrong!',
             });
@@ -51,14 +51,15 @@ module.exports = {
                 });
             }
 
-            args.date = new Date().toISOString()
+            // args.date = new Date().toISOString()
+            console.log({ args })
             const event = await createEvent(args)
 
             return res.status(201).json({
                 data: event,
             });
         } catch (error) {
-            console.error(err);
+            console.error(error);
             return res.status(400).json({
                 message: 'Something went wrong!',
             });
@@ -82,7 +83,7 @@ module.exports = {
                 data: event,
             });
         } catch (error) {
-            console.error(err);
+            console.error(error);
             return res.status(400).json({
                 message: 'Something went wrong!',
             });
@@ -96,7 +97,7 @@ module.exports = {
                 success: event ? true : false,
             });
         } catch (error) {
-            console.error(err);
+            console.error(error);
             return res.status(400).json({
                 message: 'Something went wrong!',
             });
