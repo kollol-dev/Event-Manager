@@ -17,7 +17,8 @@ describe('Event API V1 Suite', () => {
     it('should create an event', async () => {
         const eventInput = {
             name: faker.lorem.words(10),
-            location: faker.lorem.word(8)
+            location: faker.lorem.word(8),
+            date: new Date().toISOString()
         };
 
         const response = await chai
@@ -32,14 +33,17 @@ describe('Event API V1 Suite', () => {
         //   assert.exists(event.user_id, 'User ID should be exists');
         assert.exists(event.name, 'Event name should be exists');
         assert.exists(event.location, 'Event location should be exists');
+        assert.exists(event.date, 'Event date should be exists');
         assert.equal(event.name, eventInput.name, 'Given name should be same!');
         assert.equal(event.location, eventInput.location, 'Given location should be same!');
+        assert.equal(event.date, eventInput.date, 'Given date should be same!');
     })
 
     it('should return an event by id', async () => {
         const eventInput = {
             name: faker.lorem.words(10),
-            location: faker.lorem.word(8)
+            location: faker.lorem.word(8),
+            date: new Date().toISOString()
         };
         const newEvent = await createEvent(eventInput)
 
@@ -54,15 +58,17 @@ describe('Event API V1 Suite', () => {
         //   assert.exists(event.user_id, 'User ID should be exists');
         assert.exists(event.name, 'Event name should be exists');
         assert.exists(event.location, 'Event location should be exists');
+        assert.exists(event.date, 'Event date should be exists');
         assert.equal(event.name, eventInput.name, 'Given name should be same!');
-        assert.equal(event.location, eventInput.location, 'Given location should be same!');
+
     })
 
     it('should return an array of paginated events default pageSize is 5', async () => {
-        for(let i = 0; i < 15; i++){
+        for (let i = 0; i < 15; i++) {
             const eventInput = {
                 name: faker.lorem.words(10),
-                location: faker.lorem.word(8)
+                location: faker.lorem.word(8),
+                date: new Date().toISOString()
             };
             await createEvent(eventInput)
         }
@@ -79,6 +85,7 @@ describe('Event API V1 Suite', () => {
         //   assert.exists(events.user_id, 'User ID should be exists');
         assert.exists(events[0].name, 'Events name should be exists in first element');
         assert.exists(events[0].location, 'Events location should be exists in first element');
+        assert.exists(events[0].date, 'Events date should be exists in first element');
     })
 
     afterEach(async () => {
