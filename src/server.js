@@ -1,6 +1,8 @@
 require('dotenv').config({ path: `${__dirname}/../.env` });
 const { sequelize } = require("./models");
 // require('./database/connect');
+const swaggerUI = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
 const express = require('express')
 const port = process.env.PORT || 3000
@@ -14,6 +16,7 @@ app.get('/health', (req, res) => {
 sequelize.sync({ alter: true });
 
 app.use('/api/v1', eventRoutes);
+app.use('/api/v1/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 
 app.listen({ port }, async () => {
