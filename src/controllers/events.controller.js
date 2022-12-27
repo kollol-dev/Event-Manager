@@ -51,9 +51,7 @@ module.exports = {
                 });
             }
 
-            // args.date = new Date().toISOString()
             const event = await createEvent(args)
-
             return res.status(201).json({
                 data: event,
             });
@@ -76,10 +74,10 @@ module.exports = {
             }
 
             args.id = req.params.id
-            const event = await updateEvent(args)
+            await updateEvent(args)
 
             return res.status(200).json({
-                data: event,
+                event: await getEvent(args.id)
             });
         } catch (error) {
             console.error(error);
