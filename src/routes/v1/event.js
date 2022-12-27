@@ -5,7 +5,7 @@ const { pageinateEvents, getEventByid, createEvent, updateEventById, deleteEvent
 router.get('/events', pageinateEvents)
 router.get('/events/:id', getEventByid)
 router.post('/events', json(), createEvent)
-router.put('/events/:id', updateEventById)
+router.put('/events/:id', json(), updateEventById)
 router.delete('/events/:id', deleteEventById)
 
 module.exports = router

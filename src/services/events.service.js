@@ -1,7 +1,7 @@
 const { Event } = require('../models')
 
 const paginate = (query, { page, pageSize }) => {
-    const offset = parseInt(page * pageSize);
+    const offset = parseInt(--page * pageSize);
     const limit = parseInt(pageSize);
     return {
         ...query,
@@ -19,6 +19,7 @@ module.exports = {
     },
 
     createEvent: async (args) => {
+        console.log({ args })
         return Event.create(args)
     },
 
