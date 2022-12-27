@@ -58,7 +58,6 @@ describe('Event API V1 Suite', () => {
         assert.equal(event.location, eventInput.location, 'Given location should be same!');
     })
 
-
     it('should return an array of paginated events default pageSize is 5', async () => {
         for(let i = 0; i < 15; i++){
             const eventInput = {
