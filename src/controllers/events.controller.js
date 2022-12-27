@@ -90,5 +90,16 @@ module.exports = {
     },
 
     deleteEventById: async (req, res) => {
+        try {
+            const event = await deleteEventById(req.params.id)
+            return res.status(200).json({
+                success: event ? true : false,
+            });
+        } catch (error) {
+            console.error(err);
+            return res.status(400).json({
+                message: 'Something went wrong!',
+            });
+        }
     }
 }
