@@ -8,7 +8,9 @@
     "serve:docker": "docker-compose --file docker-compose.yml up --build",
     "serve:docker:down": "docker-compose --file docker-compose.yml down --remove-orphans",
     "migrate:seed": "npx sequelize-cli db:migrate --migrations-path='./src/migrations' && npx sequelize-cli db:seed:all --seeders-path='../src/seeders'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha \"./test/**/*.test.js\" --timeout 15000 --exit",
+    "test:docker": "docker-compose --file docker-compose.test.yml up --build --abort-on-container-exit --exit-code-from express-api",
+    "posttest:docker": "docker-compose --file docker-compose.test.yml down --volumes --remove-orphans"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,10 @@
     "sequelize": "^6.28.0"
   },
   "devDependencies": {
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
+    "faker": "^5.5.3",
+    "mocha": "^10.2.0",
     "nodemon": "^2.0.20",
     "sequelize-cli": "^6.5.2"
   }
