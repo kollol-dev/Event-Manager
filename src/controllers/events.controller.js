@@ -52,7 +52,6 @@ module.exports = {
             }
 
             // args.date = new Date().toISOString()
-            console.log({ args })
             const event = await createEvent(args)
 
             return res.status(201).json({

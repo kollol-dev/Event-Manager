@@ -15,14 +15,15 @@ module.exports = {
     "password": password,
     "database": database,
     "host": host,
-    "dialect": MySQL
+    "dialect": MySQL,
   },
   "test": {
     "username": username,
     "password": password,
     "database": database,
     "host": host,
-    "dialect": MySQL
+    "dialect": MySQL,
+    "logging": false
   },
   "production": {
     "username": username,
