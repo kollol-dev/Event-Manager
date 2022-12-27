@@ -1,9 +1,8 @@
 const { Event } = require('../models')
 
 const paginate = (query, { page, pageSize }) => {
-    const offset = page * pageSize;
-    const limit = pageSize;
-
+    const offset = parseInt(page * pageSize);
+    const limit = parseInt(pageSize);
     return {
         ...query,
         offset,

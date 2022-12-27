@@ -16,6 +16,7 @@ module.exports = {
     "database": database,
     "host": host,
     "dialect": MySQL,
+    "logging": false
   },
   "test": {
     "username": username,
