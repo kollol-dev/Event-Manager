@@ -159,7 +159,7 @@
         "date"
       ],
       "properties": {
-        "_id": {
+        "id": {
           "type": "integer",
           "uniqueItems": true
         },
@@ -184,8 +184,18 @@
       }
     },
     "Events": {
-      "type": "array",
-      "$ref": "#/definitions/Event"
+      "properties": {
+        "page": {
+          "type": "integer"
+        },
+        "pageSize": {
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "$ref": "#/definitions/Event"
+        }
+      }
     }
   },
   "schemes": [
