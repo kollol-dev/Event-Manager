@@ -1,5 +1,5 @@
-'use strict';
-const bcrypt = require('bcrypt')
+"use strict";
+const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 module.exports = {
@@ -12,14 +12,16 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
-    await queryInterface.bulkInsert('Users', [{
-      name: 'John Doe',
-      email: 'example@example.com',
-      password: bcrypt.hash(myPlaintextPassword, saltRounds),
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }])
+     */
+    await queryInterface.bulkInsert("Users", [
+      {
+        name: "John Doe",
+        email: "example@example.com",
+        password: bcrypt.hash(myPlaintextPassword, saltRounds),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
   },
 
   async down(queryInterface, Sequelize) {
@@ -29,5 +31,5 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-  }
+  },
 };

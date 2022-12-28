@@ -1,26 +1,26 @@
-import Vue from 'vue'
+import Vue from "vue";
 import Router from "vue-router";
-import App from './App.vue'
-import callApi from './common/misc'
-import routes from './routes'
-import ViewUI from 'view-design';
-import locale from 'view-design/dist/locale/en-US';
-import 'view-design/dist/styles/iview.css';
+import App from "./App.vue";
+import callApi from "./common/misc";
+import routes from "./routes";
+import ViewUI from "view-design";
+import locale from "view-design/dist/locale/en-US";
+import "view-design/dist/styles/iview.css";
 
 // import './assets/less/custom.less';
 
 Vue.use(Router);
-Vue.use(ViewUI, { locale })
+Vue.use(ViewUI, { locale });
 
 const router = new Router({
   mode: "history",
   routes,
 });
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 Vue.mixin(callApi);
 
 new Vue({
   router,
-  render: h => h(App)
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount("#app");

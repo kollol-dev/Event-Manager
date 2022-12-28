@@ -10,7 +10,8 @@
     "migrate:seed": "npx sequelize-cli db:migrate --migrations-path='./src/migrations' && npx sequelize-cli db:seed:all --seeders-path='../src/seeders'",
     "test": "mocha \"./test/**/*.test.js\" --timeout 15000 --exit",
     "test:docker": "docker-compose --file docker-compose.test.yml up --build --abort-on-container-exit --exit-code-from express-api",
-    "posttest:docker": "docker-compose --file docker-compose.test.yml down --volumes --remove-orphans"
+    "posttest:docker": "docker-compose --file docker-compose.test.yml down --volumes --remove-orphans",
+    "format": "prettier --write \"src/**/*.js\" \"frontend/**/*.js\" \"test/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "faker": "^5.5.3",
     "mocha": "^10.2.0",
     "nodemon": "^2.0.20",
+    "prettier": "^2.8.1",
     "sequelize-cli": "^6.5.2"
   }
 }
