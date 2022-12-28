@@ -4,6 +4,7 @@ const {
     host,
     database,
     username,
+    dbPort
   }
 } = require('./environments')
 
@@ -16,7 +17,8 @@ module.exports = {
     "database": database,
     "host": host,
     "dialect": MySQL,
-    "logging": false
+    "logging": false,
+    "port": dbPort
   },
   "test": {
     "username": username,
@@ -24,13 +26,15 @@ module.exports = {
     "database": database,
     "host": host,
     "dialect": MySQL,
-    "logging": false
+    "logging": false,
+    "port": dbPort
   },
   "production": {
     "username": username,
     "password": password,
     "database": database,
     "host": host,
-    "dialect": MySQL
+    "dialect": MySQL,
+    "port": dbPort
   }
 }
