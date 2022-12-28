@@ -22,7 +22,7 @@
             </tbody>
         </table>
 
-        <p v-if="rows && !rows.length" class="center">No data found</p>
+        <p v-if="rows && !rows.length" class="center">No event found</p>
 
         <div class="table-footer">
             <p>{{ currentPage }} of total {{ ceil(total, pageSize) }}</p>
