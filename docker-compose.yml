@@ -11,6 +11,8 @@ services:
     volumes:
       - ./src:/usr/src/app/src
       - ./frontend:/usr/src/app/frontend
+      - /usr/src/app/frontend/node_modules
+
     ports:
       - ${PORT}:${PORT}
       - ${FRONTEND_PORT}:${FRONTEND_PORT}
