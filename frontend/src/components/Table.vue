@@ -1,5 +1,5 @@
 <template>
-    <table class="table table-hover text-center" id="event-list" style="width: 100%;">
+    <table class="table table-hover" style="width: 100%;">
         <thead>
             <tr>
                 <th class="text-center">Name</th>
@@ -15,7 +15,7 @@
                 <td>{{ item.date }}</td>
                 <td>
                     <a href="javascript(void)">Edit</a>
-                    <a href="javascript(void)">Delete</a>
+                    <a href="javascript(void)"  style="padding: 0 5px;">Delete</a>
                 </td>
             </tr>
         </tbody>
@@ -32,6 +32,6 @@
 
 <script>
 module.exports = {
-    props: ['rows']
+    props: ['rows', 'loading', 'page', 'pageSize']
 }
 </script>

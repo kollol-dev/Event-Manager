@@ -1,14 +1,28 @@
 <template>
-    <div class="album py-5 bg-light">
-        <router-view />
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-white">
+                    <h5><strong>Events</strong></h5>
+                    <span class="text-muted">List of events! - </span>
+                    <a style="color: #4F47E5; font-weight: 600; cursor: pointer;" @click.prevent="showModal = !showModal">
+                        Create
+                    </a>
+
+                </div>
+                <div class="card-body">
+                    <Table :rows="events" :loading="tableLoading" :page="page" :pageSize="pageSize"></Table>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
   
 <script>
-// import Table from "../components/Table.vue"
+import Table from "../components/Table.vue"
 export default {
     components: {
-        // Table
+        Table
     },
 
     data() {
