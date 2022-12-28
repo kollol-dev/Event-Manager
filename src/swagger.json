@@ -213,6 +213,9 @@
         "pageSize": {
           "type": "integer"
         },
+        "total": {
+          "type": "integer"
+        },
         "data": {
           "type": "array",
           "$ref": "#/definitions/Event"
