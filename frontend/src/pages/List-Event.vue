@@ -6,7 +6,7 @@
                     <h5><strong>Events</strong></h5>
                     <span class="text-muted">List of events! - </span>
                     <a style="color: #4F47E5; font-weight: 600; cursor: pointer;"
-                        @click.prevent="showModal = !showModal">
+                        @click.prevent="$router.push('/events/create')">
                         Create
                     </a>
                 </div>
@@ -14,16 +14,18 @@
                     <div style="margin-bottom: 15px;">
                         <p>Show
                             <span>
-                                <Select v-model="pageSize" @on-select="changePageSize" style="width:50px">
-                                    <Option v-for="(item, index) in pageSizeOptions" :key="item + index" :value="item">
-                                        {{ item }}</Option>
-                                </Select>
+                                <select v-model="pageSize" @change="paginate($event)" style="width:50px">
+                                    <option v-for="(item, index) in pageSizeOptions" :key="item + index" :value="item">
+                                        {{ item }}
+                                    </option>
+                                </select>
                             </span>
                             entries
                         </p>
                     </div>
-                    <data-table :rows="events" :loading="tableLoading" :page="page" :pageSize="updatePage" :total="total"
-                        @updateLoading="updateLoading" @deleteEventId="filterEvents" @paginate="paginate">
+                    <data-table :rows="events" :loading="tableLoading" :page="page" :pageSize="updatePage"
+                        :total="total" @updateLoading="updateLoading" @deleteEventId="filterEvents"
+                        @paginate="paginate">
                     </data-table>
                 </div>
             </div>

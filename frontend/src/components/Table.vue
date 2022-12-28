@@ -32,7 +32,7 @@
 
         <div class="table-footer">
             <p>{{ currentPage }} of total {{  ceil(total, pageSize) }}</p>
-            <Page v-model="currentPage" :total="total" :page-size="pageSize" @on-change="changePage" />
+            <Page v-model="currentPage" :total="currentTotal" :page-size="pageSize" @on-change="changePage" />
         </div>
 
         <inline-loader v-if="loading" />
@@ -48,7 +48,13 @@ export default {
 
     data() {
         return {
-            currentPage: this.page
+            currentPage: this.page,
+        }
+    },
+
+    computed: {
+        currentTotal(){
+            return this.pageSize
         }
     },
 
