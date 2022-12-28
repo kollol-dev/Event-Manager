@@ -50,7 +50,18 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/Event"
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
             },
             "required": true,
             "description": "Event Schema"
@@ -107,7 +118,18 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/Event"
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
             },
             "required": true,
             "description": "Event Schema"
@@ -159,7 +181,7 @@
         "date"
       ],
       "properties": {
-        "_id": {
+        "id": {
           "type": "integer",
           "uniqueItems": true
         },
@@ -184,8 +206,18 @@
       }
     },
     "Events": {
-      "type": "array",
-      "$ref": "#/definitions/Event"
+      "properties": {
+        "page": {
+          "type": "integer"
+        },
+        "pageSize": {
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "$ref": "#/definitions/Event"
+        }
+      }
     }
   },
   "schemes": [
