@@ -5,7 +5,7 @@ services:
     container_name: event-app
     build:
       context: .
-      dockerfile: Dockerfile.test
+      dockerfile: Dockerfile
     env_file:
       - ./.env
     volumes:
