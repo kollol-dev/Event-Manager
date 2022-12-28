@@ -58,7 +58,7 @@ export default {
             return moment(date).format('MMM D YYYY - HH:mm:ss')
         },
         ceil(total, pageSize) {
-            return Math.ceil(total / pageSize)
+            return Math.ceil(total / pageSize) || 1
         },
 
         changePage(page) {
