@@ -1,5 +1,5 @@
 const { paginateEventsValidator, createEventValidator, updateEventValidator } = require('../validators/events.validator')
-const { paginateEvent, getEvent, createEvent, updateEvent, deleteEventById } = require('../services/events.service')
+const { countEvents, paginateEvent, getEvent, createEvent, updateEvent, deleteEventById } = require('../services/events.service')
 
 module.exports = {
     pageinateEvents: async (req, res) => {
@@ -12,10 +12,14 @@ module.exports = {
                 });
             }
 
-            const events = await paginateEvent(page, pageSize)
+            const [events, totalEvents] = await Promise.all([
+                paginateEvent(page, pageSize),
+                countEvents()
+            ])
             return res.status(200).json({
                 page,
                 pageSize,
+                total: totalEvents,
                 data: events,
             });
         } catch (error) {

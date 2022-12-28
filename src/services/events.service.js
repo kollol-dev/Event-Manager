@@ -10,6 +10,11 @@ const paginate = (query, { page, pageSize }) => {
     };
 };
 module.exports = {
+    countEvents: async () => {
+        const events = await Event.findAll();
+        return events.length
+    },
+
     paginateEvent: async (page, pageSize) => {
         return Event.findAll(paginate({ raw: true }, { page, pageSize }))
     },
