@@ -13,7 +13,7 @@
                     <div style="margin-bottom: 15px;">
                         <p>Show
                             <span>
-                                <select v-model="pageSize" @change="paginate($event)" style="width:50px">
+                                <select v-model="pageSize" @change="handleChangePageSize($event)" style="width:50px">
                                     <option v-for="(item, index) in pageSizeOptions" :key="item + index" :value="item">
                                         {{ item }}
                                     </option>
@@ -24,7 +24,7 @@
                     </div>
                     <data-table :rows="events" :loading="tableLoading" :page="page" :pageSize="updatePage"
                         :total="total" @updateLoading="updateLoading" @deleteEventId="filterEvents"
-                        @paginate="paginate">
+                        @changePage="handleChangePage">
                     </data-table>
                 </div>
             </div>
@@ -44,7 +44,7 @@ export default {
             events: [],
             tableLoading: true,
             page: 1,
-            pageSize: 5,
+            pageSize: 10,
             total: 0,
             showModal: false,
             pageSizeOptions: [5, 10, 15, 25, 50]
@@ -68,6 +68,16 @@ export default {
 
         changePageSize({ value }) {
             this.pageSize = value
+            this.paginate()
+        },
+
+        handleChangePage(page){
+            this.page = page
+            this.paginate()
+        },
+
+        handleChangePageSize(){
+            this.page = 1
             this.paginate()
         },
 

@@ -16,7 +16,11 @@ module.exports = {
   },
 
   paginateEvent: async (page, pageSize) => {
-    return Event.findAll(paginate({ raw: true }, { page, pageSize }));
+    return Event.findAll(paginate({
+      order: [
+        ['id', 'DESC'],
+      ], raw: true
+    }, { page, pageSize }));
   },
 
   getEvent: async (id) => {

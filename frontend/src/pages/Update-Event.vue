@@ -20,11 +20,9 @@
                         </div>
                         <div class="col-md-8">
                             <p class="input-label">Location</p>
-                            <Input v-model.trim="eventInput.location"
-                                :class="['input', errorData.location ? 'error-border' : '']"></Input>
-                            <!-- <Select v-model="eventInput.location">
-                                <Option v-for="(item, index) in countryList" :key="index" :value="item">{{ item }}</Option>
-                            </Select> -->
+                            <select class="form-control" v-model="eventInput.location">
+                                <option v-for="(item,index) in countryList" :key="index" :value="item">{{ item }}</option>
+                            </select>
                             <p class="error-text" v-if="errorData.location">{{ errorData.location }}</p>
                         </div>
                         <div class="col-md-4">

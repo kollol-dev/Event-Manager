@@ -19,9 +19,13 @@
                         </div>
                         <div class="col-md-8">
                             <p class="input-label">Location</p>
-                            <Input v-model.trim="eventInput.location"
+                            <select class="form-control" v-model="eventInput.location">
+                                <option v-for="(item, index) in countryList" :key="index" :value="item">{{ item }}
+                                </option>
+                            </select>
+                            <!-- <Input v-model.trim="eventInput.location"
                                 :class="['input', error.location ? 'error-border' : '']"></Input>
-                            <p class="error-text" v-if="error.location">{{ error.location }}</p>
+                            <p class="error-text" v-if="error.location">{{ error.location }}</p> -->
                         </div>
                         <div class="col-md-4">
                             <p class="input-label">Date</p>
@@ -44,10 +48,12 @@
 </template>
 
 <script>
+import CountryList from "../common/country.json"
 export default {
 
     data() {
         return {
+            countryList: CountryList,
             loading: false,
             eventInput: {
                 name: "",

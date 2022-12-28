@@ -13,7 +13,7 @@
                 <tr v-for="(item, index) in rows" :key="item + index">
                     <td>{{ item.name }}</td>
                     <td>{{ item.location }}</td>
-                    <td>{{ item.date }}</td>
+                    <td>{{ formatDate(item.date) }} UTC</td>
                     <td>
                         <a class="action-link" @click.prevent="$router.push(`/events/update/${item.id}`)">Edit</a>
                         <a class="action-link" @click.prevent="deleteEvent(item.id)" style="padding: 0 5px;">Delete</a>
@@ -21,6 +21,8 @@
                 </tr>
             </tbody>
         </table>
+
+        <p v-if="rows && !rows.length" class="center">No data found</p>
 
         <div class="table-footer">
             <p>{{ currentPage }} of total {{ ceil(total, pageSize) }}</p>
@@ -33,6 +35,7 @@
 
 <script>
 import InlineLoader from "@/components/loader/Inline-Lodaer.vue"
+import moment from "moment"
 export default {
     name: 'DataTable',
     props: ['rows', 'loading', 'page', 'pageSize', 'totalRecord', 'total'],
@@ -51,12 +54,15 @@ export default {
     },
 
     methods: {
+        formatDate(date){
+            return moment(date).format('MMM D YYYY - HH:mm:ss')
+        },
         ceil(total, pageSize) {
             return Math.ceil(total / pageSize)
         },
 
         changePage(page) {
-            this.$emit('paginate', page)
+            this.$emit('changePage', page)
         },
         async deleteEvent(id) {
             this.$emit('updateLoading', true)
