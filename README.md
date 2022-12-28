@@ -3,18 +3,31 @@
 This project contains few apis like create events, paginate events, update and delete any specific event. In here, I used **Node.js** and **MySQL**. I tried to follow TDD approach to built the apis. 
 
 ## Requirements
-- Docker  
+- Docker ([Documentation](https://www.docker.com/get-started/))
 - Docker Compose
-- Node.js
-- NPM
+- Node.js ([Download](https://nodejs.org/en/))
+- NPM (Will be download with Node.js)
+
+There are two part of this project. 
+* Frontent - Vue.js ( http://localhost:3001 )
+* Backend - Nodejs + MySQL ( http://localhost:3000 )
 
 ## Installation
 - Copy `.env.example` to `.env` 
+```
+cp .env.example .env
+```
 
-### For Docker
-- Run  `npm run serve:docker` 
+### Run Docker
+```
+npm run serve:docker
+```
+#### If you need to Re-Run docker, you should remove the container which was created before
+```
+npm run serve:docker:down
+```
 
-### For Mannual
+### Run Mannual
 - Install all dependencies, Run `npm install` 
 - Run `npm run serve`
 
