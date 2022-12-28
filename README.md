@@ -27,12 +27,6 @@ npm run serve:docker
 npm run serve:docker:down
 ```
 
-### Run Mannual
-- Install all dependencies, Run `npm install` 
-- Run `npm run serve`
-
-After this operation, the app server will start in `http://localhost:3000`
-
 ### APIs
 I have attached all APIs here as well.
 For more details abouts APIs, visit this [http://localhost:3000/api/v1/docs/](http://localhost:3000/api/v1/docs/) to see api documentation.
@@ -45,7 +39,6 @@ For more details abouts APIs, visit this [http://localhost:3000/api/v1/docs/](ht
 - DELETE Delete Event by id [/api/v1/events/:id](http://localhost:3000/api/v1/events/:id)
 
 ## Tests
-- For testcase you can run `npm run test` (manually)
 - For testcase you can run `npm run test:docker` (docker)
 
 
