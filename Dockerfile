@@ -13,8 +13,9 @@ FROM node:14.17-alpine
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm i
+RUN npm install
+RUN npm install -g @vue/cli
 COPY . .
-# COPY ./frontend/package*.json ./frontend
 RUN cd ./frontend && npm install
 RUN cd ./frontend && npm run build
 
