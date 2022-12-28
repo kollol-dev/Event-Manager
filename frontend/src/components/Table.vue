@@ -35,7 +35,6 @@
 
 <script>
 import InlineLoader from "@/components/loader/Inline-Lodaer.vue"
-import moment from "moment"
 export default {
     name: 'DataTable',
     props: ['rows', 'loading', 'page', 'pageSize', 'totalRecord', 'total'],
@@ -54,9 +53,6 @@ export default {
     },
 
     methods: {
-        formatDate(date){
-            return moment(date).format('MMM D YYYY - HH:mm:ss')
-        },
         ceil(total, pageSize) {
             return Math.ceil(total / pageSize) || 1
         },

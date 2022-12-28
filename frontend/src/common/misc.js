@@ -1,4 +1,5 @@
 import axios from "axios";
+import moment from "moment";
 axios.defaults.baseURL = "http://localhost:3000/api/v1";
 
 const callApi = async (method, url, dataObj, params = {}) => {
@@ -22,6 +23,10 @@ const callApi = async (method, url, dataObj, params = {}) => {
 export default {
   methods: {
     callApi,
+
+    formatDate(date) {
+      return moment(date).format('MMM D YYYY - HH:mm:ss')
+    },
 
     success(message) {
       this.$Notice.success({

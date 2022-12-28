@@ -21,7 +21,8 @@
                         <div class="col-md-8">
                             <p class="input-label">Location</p>
                             <select class="form-control" v-model="eventInput.location">
-                                <option v-for="(item,index) in countryList" :key="index" :value="item">{{ item }}</option>
+                                <option v-for="(item, index) in countryList" :key="index" :value="item">{{ item }}
+                                </option>
                             </select>
                             <p class="error-text" v-if="errorData.location">{{ errorData.location }}</p>
                         </div>
@@ -48,6 +49,7 @@
 <script>
 import InlineLoader from "../components/loader/Inline-Lodaer.vue"
 import CountryList from "../common/country.json"
+import moment from "moment"
 export default {
     components: {
         InlineLoader
@@ -124,8 +126,9 @@ export default {
             this.eventInput = {
                 name: res.data.data.name,
                 location: res.data.data.location,
-                date: res.data.data.date,
+                date: moment(res.data.data.date).format(),
             }
+            console.log(this.eventInput)
         }
         else this.swr()
         this.loading = false
