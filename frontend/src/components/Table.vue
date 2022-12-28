@@ -15,23 +15,15 @@
                     <td>{{ item.location }}</td>
                     <td>{{ item.date }}</td>
                     <td>
-                        <a @click.prevent="$router.push(`/events/update/${item.id}`)">Edit</a>
-                        <a @click.prevent="deleteEvent(item.id)" style="padding: 0 5px;">Delete</a>
+                        <a class="action-link" @click.prevent="$router.push(`/events/update/${item.id}`)">Edit</a>
+                        <a class="action-link" @click.prevent="deleteEvent(item.id)" style="padding: 0 5px;">Delete</a>
                     </td>
                 </tr>
             </tbody>
-            <tfoot>
-                <tr>
-                    <th class="text-center">Name</th>
-                    <th class="text-center">Location</th>
-                    <th class="text-center">Time</th>
-                    <th class="text-center">Action</th>
-                </tr>
-            </tfoot>
         </table>
 
         <div class="table-footer">
-            <p>{{ currentPage }} of total {{  ceil(total, pageSize) }}</p>
+            <p>{{ currentPage }} of total {{ ceil(total, pageSize) }}</p>
             <Page v-model="currentPage" :total="currentTotal" :page-size="pageSize" @on-change="changePage" />
         </div>
 
@@ -53,8 +45,8 @@ export default {
     },
 
     computed: {
-        currentTotal(){
-            return this.pageSize
+        currentTotal() {
+            return this.total
         }
     },
 

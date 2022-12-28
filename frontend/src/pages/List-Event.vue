@@ -5,8 +5,7 @@
                 <div class="card-header bg-white">
                     <h5><strong>Events</strong></h5>
                     <span class="text-muted">List of events! - </span>
-                    <a style="color: #4F47E5; font-weight: 600; cursor: pointer;"
-                        @click.prevent="$router.push('/events/create')">
+                    <a class="action-link" @click.prevent="$router.push('/events/create')">
                         Create
                     </a>
                 </div>

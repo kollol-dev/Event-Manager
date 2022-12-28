@@ -5,7 +5,7 @@ import updateEvent from "./pages/Update-Event.vue"
 const routes = [
   { path: '/', component: EventList },
   { path: '/events/create', component: CreateEvent },
-  { path: '/events/update', component: updateEvent }
+  { path: '/events/update/:id', component: updateEvent }
 ]
 
 export default routes;

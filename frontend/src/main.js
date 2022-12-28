@@ -4,12 +4,13 @@ import App from './App.vue'
 import callApi from './common/misc'
 import routes from './routes'
 import ViewUI from 'view-design';
+import locale from 'view-design/dist/locale/en-US';
 import 'view-design/dist/styles/iview.css';
 
 // import './assets/less/custom.less';
 
 Vue.use(Router);
-Vue.use(ViewUI)
+Vue.use(ViewUI, { locale })
 
 const router = new Router({
   mode: "history",

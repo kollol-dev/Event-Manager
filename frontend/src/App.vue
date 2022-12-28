@@ -5,3 +5,7 @@
     </div>
   </div>
 </template>
+
+<style>
+  @import './assets/css/custom.css';
+</style>

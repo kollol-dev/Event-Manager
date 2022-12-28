@@ -21,6 +21,27 @@ const callApi = async (method, url, dataObj, params = {}) => {
 
 export default {
     methods: {
-        callApi
+        callApi,
+
+        success(message) {
+            this.$Notice.success({
+                title: 'Success',
+                desc: message
+            });
+        },
+
+        error(message) {
+            this.$Notice.error({
+                title: 'Error',
+                desc: message
+            });
+        },
+
+        swr() {
+            this.$Notice.error({
+                title: 'Error',
+                desc: 'Something went wrong! Please try agein.'
+            });
+        },
     }
 };
